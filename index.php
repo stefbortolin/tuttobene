@@ -27,14 +27,14 @@ if(isset($user['action'])) {
         case "editarproducto": {
 
             $producto = $user['idproducto'];
-            $nombre = $user['nombre'];
+            $nombre = $user['nommbre'];
 
             break;
         }
 
         case "eliminarproducto": {
 
-
+            
             break;
         }
 
