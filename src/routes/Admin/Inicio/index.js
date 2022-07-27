@@ -53,7 +53,7 @@ export default function AdminInicio() {
     return (
         <div>
             <div>
-                <h1>Agregar producto</h1>
+                <h1>Agregar productodsdsad</h1>
                 <input id="ap-nombre" placeholder="nombre del producto"/>
                 <input id="ap-precio" placeholder="precio del producto"/>
 
