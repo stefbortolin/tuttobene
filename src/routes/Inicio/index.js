@@ -1,10 +1,9 @@
 export default function Inicio() {
 
-    
+
     return (
         <div>
-s
-            adsadsa
+                TuttoBene
         </div>
     )
 }
