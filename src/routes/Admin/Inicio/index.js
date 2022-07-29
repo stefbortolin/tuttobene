@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 
+import MenuAdmin from '../../../components/MenuAdmin'
+
+import './index.css'
+
 export default function AdminInicio() {
 
     const [getCategorias, setCategorias] = useState(null)
@@ -51,45 +55,47 @@ export default function AdminInicio() {
 
     }
     return (
-        <div>
+        <MenuAdmin select="inicio">
             <div>
-                <h1>Agregar productodsdsad</h1>
-                <input id="ap-nombre" placeholder="nombre del producto"/>
-                <input id="ap-precio" placeholder="precio del producto"/>
+                <div>
+                    <h1>Agregar productodsdsad</h1>
+                    <input id="ap-nombre" placeholder="nombre del producto"/>
+                    <input id="ap-precio" placeholder="precio del producto"/>
 
 
-                <select id="ap-cat" onChange={(e) => setAgCategoria(e.target.value) }>
-                    {
-                        getCategorias != null &&
-                        getCategorias.map((value, index) => {
-                            return (<option key={index} value={index}>{value.nombre}</option>)
-                        })
-                    }
-                </select>
-                <select>
-                    {
-                        getCategorias != null &&
-                        getCategorias[ agPCategoria ]?.subcategorias?.map((value, index) => {
-                            return (<option key={index}>{value.nombre}</option>)
-                        })
-                    }
-                </select>
-                <button>agregar producto</button>
+                    <select id="ap-cat" onChange={(e) => setAgCategoria(e.target.value) }>
+                        {
+                            getCategorias != null &&
+                            getCategorias.map((value, index) => {
+                                return (<option key={index} value={index}>{value.nombre}</option>)
+                            })
+                        }
+                    </select>
+                    <select>
+                        {
+                            getCategorias != null &&
+                            getCategorias[ agPCategoria ]?.subcategorias?.map((value, index) => {
+                                return (<option key={index}>{value.nombre}</option>)
+                            })
+                        }
+                    </select>
+                    <button>agregar producto</button>
+                </div>
+                <div>
+                    <h1>Agregar categorias</h1>
+                    <input id="ac-nombre" placeholder="Nombre de la categoria"/>
+                    <select id="ac-subcat">
+                        <option value={0}>-</option>
+                        {
+                            getCategorias != null &&
+                            getCategorias.map((value, index) => {
+                                return (<option key={index} value={value.id}>{value.nombre}</option>)
+                            })
+                        } 
+                    </select>
+                    <button onClick={() => agregarCategoria() }>Agregar categoria</button>
+                </div>
             </div>
-            <div>
-                <h1>Agregar categorias</h1>
-                <input id="ac-nombre" placeholder="Nombre de la categoria"/>
-                <select id="ac-subcat">
-                    <option value={0}>-</option>
-                    {
-                        getCategorias != null &&
-                        getCategorias.map((value, index) => {
-                            return (<option key={index} value={value.id}>{value.nombre}</option>)
-                        })
-                    } 
-                </select>
-                <button onClick={() => agregarCategoria() }>Agregar categoria</button>
-            </div>
-        </div>
+        </MenuAdmin>
     )
 }

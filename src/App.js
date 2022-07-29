@@ -9,6 +9,8 @@ import {
 import Inicio from './routes/Inicio'
 
 import AdminInicio from './routes/Admin/Inicio'
+import AdminCategorias from "./routes/Admin/Categorias";
+import AdminAgregarProducto from "./routes/Admin/AgregarProducto";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
 
 
             <Route path="/admin" element={<AdminInicio/>} />
+            <Route path="/admin/categorias" element={<AdminCategorias/>} />
+            <Route path="/admin/agregarproducto" element={<AdminAgregarProducto/>} />
         </Routes>
     </Router>
   );

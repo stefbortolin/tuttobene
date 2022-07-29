@@ -1,0 +1,130 @@
+
+* {
+    padding:0;
+    margin:0;
+    font-family: 'Anek Malayalam', sans-serif;
+}
+.content {
+    background:#fff;
+    border-radius: 10px;
+    padding:20px;
+    box-sizing: border-box;
+    border:1px solid #cccccc;
+    width:500px;
+    margin:0 auto;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagecontent {
+    margin:0 auto;
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.imagelist {
+    width:100%;
+    padding:1px;
+    box-sizing: border-box;
+    border:1px solid #e1e1e1;
+    display:flex;
+    gap:5px;
+}
+
+.image {
+    width:250px;
+    height:250px;
+    background:#e1e1e1;
+    display:flex;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.imagelistitem {
+    width:40px;
+    height:40px;
+    background:#e1e1e1;
+    cursor:pointer;
+}
+
+
+.inputform {
+    position: relative;
+    margin: 20px 0;
+}
+
+.inputform label {
+    position:absolute;
+    font-size:12px;
+    background: #fff;
+    top:-8px;
+    left:10px;
+
+}
+.inputform input {
+    border:1px solid #e1e1e1;
+    outline:0;
+    width:100%;
+    padding:10px;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.inputform select {
+    width:100%;
+    border:1px solid #e1e1e1;
+    padding:10px;
+    outline:0;
+}
+
+.inputform option {
+    padding:10px;
+}
+
+.form button {
+    width:100%;
+    padding:10px;
+    cursor:pointer;
+    background:#3CA6F3;
+    border:0;
+    border-radius: 3px;
+    color:#fff;
+}
+
+.separador {
+    width:100%;
+}
+
+.separador {
+   display:flex;
+   align-items: center;
+   gap:20px;
+}
+.separadorline {
+    flex:1;
+    height:1px;
+    background:#e1e1e1;
+    width:100px;
+}
+
+.inputcolores {
+    padding:1px;
+    background:#e1e1e1;
+    border-radius: 3px;
+    border:1px solid #e1e1e1;
+    display:flex;
+    gap:2px;
+    flex-direction: row;
+}
+
+#tallecolores {
+    display:none;
+}
+
+.inputcolor {
+    width:30px;
+    height:30px;
+    background:red;
+}
