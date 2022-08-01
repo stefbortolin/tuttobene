@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 import Modal from 'react-modal';
 
 
@@ -12,15 +12,37 @@ export default function AdminCategorias() {
 
     const [modalState, setModalState] = useState(0)
 
+    const [getCategorias, setCategorias] = useState(null)
 
-    const editarCategoria = () => {
-        setModalState(1)
+    const [getIndexEditar, setIndexEditar] = useState(-1)
+
+
+    useEffect(() => {
+        axios({
+            url: `http://localhost/index.php`,
+            method: 'POST',
+            data: {
+                action:'getcategorias'
+            }
+        }).then(res => {
+            const data = res.data;
+            setCategorias(data)
+            console.log(data)
+        })
+    }, [])
+
+    const editarCategoria = (index) => {
+        setIndexEditar(index)
+        console.log(getCategorias[index])
     }
 
 
     const guardarCambios = () => {
+        const nuevoNombre = document.getElementById("categoriaName").value
+        alert("nashe")
         setModalState(0)
     }
+
 
     return (
         <div>
@@ -28,25 +50,29 @@ export default function AdminCategorias() {
                 <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
                     <div className="inputnc">
                         <input type="text" placeholder="Nombre de la categoría"/>
-                        <button>Agregar categoria</button>
+                        <button >Agregar categoria</button>
                     </div>
 
                     <div className="cat-list">
-                        <div className="cat-list-item">
+                        {
+                            getCategorias !=null && getCategorias.map((value,index) => {
+                                return (
+                                <div className="cat-list-item" key={index}>
                             <div className="cat-list-item-name">
-                                <span><b>Congelados</b> (20 productos)</span>
+                                <span><b>{value.nombre}</b></span>
                             </div>
                             <div className="cat-list-item-opt">
-                                <button className="cat-list-item-opt-btne" onClick={() => editarCategoria() }>Editar</button>
+                                <button className="cat-list-item-opt-btne" onClick={() => editarCategoria(index) }>Editar</button>
                                 <button className="cat-list-item-opt-btnr">Eliminar</button>
                             </div>
-                        </div>
+                            </div>)
+                            })
+                        }
 
-                       
                     </div>
                 </div>
                 <Modal
-        isOpen={modalState == 1}
+        isOpen={getIndexEditar != -1}
         onRequestClose={() => setModalState(0)}
         style={{
             overlay: {
@@ -63,16 +89,24 @@ export default function AdminCategorias() {
         preventScroll={true}
         contentLabel="Example Modal"
       >
-        <div className='modal-title'>
-            <span>Congelados</span>
+        {getIndexEditar != -1 && 
+        <div>
+            <div className='modal-title'>
+                <span>Congelados</span>
+            </div>
+            <div className='modal-input'>
+                <input type="text" id="categoriaName" value={getCategorias[getIndexEditar]?.nombre}  onChange={(event) => {
+                    const cat = getCategorias
+                    cat[getIndexEditar].nombre = event.target.value
+                    setCategorias([...cat])
+                }} placeholder="Nombre de Categoria"/>
+            </div>
+            <div className='modal-btn'>
+                <button onClick={() => guardarCambios()}>Guardar</button>
+            </div>
         </div>
-        <div className='modal-input'>
-            <input type="text" placeholder="Nombre del producto"/>
-        </div>
-        <div className='modal-btn'>
-            <button onClick={() => guardarCambios()}>Guardar</button>
-        </div>
-      </Modal>
+        } 
+        </Modal>
             </MenuAdmin>
         </div>
     )

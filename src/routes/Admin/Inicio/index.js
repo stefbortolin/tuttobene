@@ -53,6 +53,7 @@ export default function AdminInicio() {
             }
         })
 
+        
     }
     return (
         <MenuAdmin select="inicio">
