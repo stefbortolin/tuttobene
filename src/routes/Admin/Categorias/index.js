@@ -39,7 +39,12 @@ export default function AdminCategorias() {
 
     const guardarCambios = () => {
         const nuevoNombre = document.getElementById("categoriaName").value
+        getCategorias[getIndexEditar].nombre = nuevoNombre
         alert("nashe")
+        setModalState(0)
+    }
+
+    const cancelarCambios = () => {
         setModalState(0)
     }
 
@@ -92,7 +97,7 @@ export default function AdminCategorias() {
         {getIndexEditar != -1 && 
         <div>
             <div className='modal-title'>
-                <span>Congelados</span>
+                <span>{getCategorias[getIndexEditar]?.nombre}</span>
             </div>
             <div className='modal-input'>
                 <input type="text" id="categoriaName" value={getCategorias[getIndexEditar]?.nombre}  onChange={(event) => {
@@ -103,6 +108,7 @@ export default function AdminCategorias() {
             </div>
             <div className='modal-btn'>
                 <button onClick={() => guardarCambios()}>Guardar</button>
+                <button onClick={() => cancelarCambios()}>Cancelar</button>
             </div>
         </div>
         } 

@@ -34,5 +34,14 @@
 .input input:focus ~ label {
     top:-8px;
 }
+.inputnc button {
+    padding:14px;
+    border-radius: 4px;
+    cursor:pointer;
+    background:#2b9e2d;
+    color:#fff;
+    border:0;
+    font-size:16px;
+}
 
 
