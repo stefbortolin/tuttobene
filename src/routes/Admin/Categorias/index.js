@@ -16,6 +16,8 @@ export default function AdminCategorias() {
 
     const [getIndexEditar, setIndexEditar] = useState(-1)
 
+    const [getDataEditar, setDataEditar] = useState(null)
+
 
     useEffect(() => {
         axios({
@@ -32,6 +34,7 @@ export default function AdminCategorias() {
     }, [])
 
     const editarCategoria = (index) => {
+        setDataEditar(getCategorias[index])
         setIndexEditar(index)
         console.log(getCategorias[index])
     }
@@ -45,11 +48,13 @@ export default function AdminCategorias() {
         const nuevoNombre = document.getElementById("categoriaName").value
         getCategorias[getIndexEditar].nombre = nuevoNombre
         alert("nashe")
-        setModalState(0)
+        setIndexEditar(-1)
+        setDataEditar(null)
     }
 
     const cancelarCambios = () => {
-        setModalState(0)
+        setIndexEditar(-1)
+        setDataEditar(null)
     }
 
 
@@ -104,10 +109,10 @@ export default function AdminCategorias() {
                 <span>{getCategorias[getIndexEditar]?.nombre}</span>
             </div>
             <div className='modal-input'>
-                <input type="text" id="categoriaName" value={getCategorias[getIndexEditar]?.nombre}  onChange={(event) => {
-                    const cat = getCategorias
-                    cat[getIndexEditar].nombre = event.target.value
-                    setCategorias([...cat])
+                <input type="text" id="categoriaName" value={getDataEditar?.nombre}  onChange={(event) => {
+                    let cat = getDataEditar
+                    cat.nombre = event.target.value
+                    setDataEditar({...cat})
                 }} placeholder="Nombre de Categoria"/>
             </div>
             <div className='modal-btn'>
