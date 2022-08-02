@@ -3,6 +3,7 @@ header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 header("Allow: GET, POST, OPTIONS, PUT, DELETE");
+
 $method = $_SERVER['REQUEST_METHOD'];
 if($method == "OPTIONS") {
     die();
@@ -18,23 +19,24 @@ if(isset($user['action'])) {
 
 
         case "agregarproducto": {
-            echo "HOla";
-
-
+            $query = $mysql->prepare("INSERT INTO  productos (nombre,precio) VALUES (:nombre, :precio)");
+            $query->bindParam(":nombre", $user['nombre'], PDO::PARAM_STR);
+            $query->bindParam(":precio", $user['precio'], PDO::PARAM_INT);
+            $query->execute();
             break;
         }
 
         case "editarproducto": {
 
             $producto = $user['idproducto'];
-            $nombre = $user['nombre'];
+            $nombre = $user['nommbre'];
 
             break;
         }
 
         case "eliminarproducto": {
 
-
+            
             break;
         }
 
