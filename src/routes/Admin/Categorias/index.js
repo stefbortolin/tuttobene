@@ -36,6 +36,10 @@ export default function AdminCategorias() {
         console.log(getCategorias[index])
     }
 
+    const eliminarCategoria = (index) => {
+        //elimino la categoria
+    }
+
 
     const guardarCambios = () => {
         const nuevoNombre = document.getElementById("categoriaName").value
@@ -68,7 +72,7 @@ export default function AdminCategorias() {
                             </div>
                             <div className="cat-list-item-opt">
                                 <button className="cat-list-item-opt-btne" onClick={() => editarCategoria(index) }>Editar</button>
-                                <button className="cat-list-item-opt-btnr">Eliminar</button>
+                                <button className="cat-list-item-opt-btnr" onClick={() => eliminarCategoria(index) }>Eliminar</button>
                             </div>
                             </div>)
                             })
